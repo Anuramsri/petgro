@@ -3,7 +3,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import { Suspense } from "react";
 import { Redirect, Route, RouteComponentProps } from "react-router";
 // import Home from "../pages/Home/Home";
-import { LOGIN, HOME } from "./constants";
+import { HOME } from "./constants";
 import { IRoute, routes } from "./routes";
 
 const Router: React.FC = () => {
