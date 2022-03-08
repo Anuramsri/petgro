@@ -1,14 +1,7 @@
-import {
-  IonButton,
-  IonImg,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonThumbnail,
-} from "@ionic/react";
-import { image } from "ionicons/icons";
+import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 export interface LoginData {
   username: string;
@@ -17,31 +10,30 @@ export interface LoginData {
 
 const Login: React.FC = () => {
   const initialValue = {
-    username: "etest",
-    password: "asdsafsdf",
+    username: "",
+    password: "",
   };
 
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: initialValue,
-    mode: "onBlur",
+    mode: "onTouched",
+    reValidateMode: "onSubmit",
   });
 
-  const [data, setData] = useState<LoginData>();
+  const history = useHistory();
 
-  const submitHandler = () => {
-    console.log(data);
-    setData(data);
+  const submitHandler = (formData: LoginData) => {
+    console.log(formData?.username, formData?.password);
+    history.push("/home");
   };
 
   const showError = (_fieldName: string) => {
     let error = (errors as any)[_fieldName];
 
-    console.log(error);
     return (
       error && (
         <div
@@ -62,14 +54,7 @@ const Login: React.FC = () => {
     <form onSubmit={handleSubmit(submitHandler)}>
       <IonItem>
         <IonLabel>Username:</IonLabel>
-        <Controller
-          name="username"
-          render={({ field: { onChange, onBlur } }) => {
-            return <IonInput />;
-          }}
-          control={control}
-          rules={{ required: false }}
-        />
+        <IonInput type="text" {...register("username", { required: true })} />
 
         {showError("username")}
       </IonItem>
@@ -77,7 +62,7 @@ const Login: React.FC = () => {
         <IonLabel>Password:</IonLabel>
         <IonInput
           type="password"
-          {...register("password", { required: false })}
+          {...register("password", { required: true })}
         />
         {showError("password")}
       </IonItem>
