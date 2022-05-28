@@ -18,6 +18,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import './custom.css'
 
 /* Navigation */
 import { Router } from "./routes/router";

@@ -1,7 +1,21 @@
-import { IonButton, IonInput, IonItem, IonLabel } from "@ionic/react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import {
+  IonLabel,
+  IonButton,
+  IonRow,
+  IonCol,
+  IonImg,
+  IonItem,
+  IonGrid,
+  IonInput,
+} from '@ionic/react';
+import { useHistory} from "react-router-dom";
+import logo from "../../../../src/assets/images/horizontal-light.png";
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import '../../../pages/Login/Signup.css';
+import { userLogin } from "../../services/services";
+import { HttpStatus } from "../../../routes/constants";
 
 export interface LoginData {
   username: string;
@@ -9,67 +23,91 @@ export interface LoginData {
 }
 
 const Login: React.FC = () => {
-  const initialValue = {
-    username: "",
-    password: "",
-  };
+  const [loginData ,setLoginData] = useState({})
 
   const {
-    register,
     handleSubmit,
-    formState: { errors },
+    register,
+    formState: { errors }
   } = useForm({
-    defaultValues: initialValue,
-    mode: "onTouched",
-    reValidateMode: "onSubmit",
+    defaultValues: {
+      username: "",
+      password: "",
+    }
   });
 
   const history = useHistory();
 
-  const submitHandler = (formData: LoginData) => {
-    console.log(formData?.username, formData?.password);
-    history.push("/home");
+  const onSubmit = (data: any) => {
+    setLoginData(data)
+    userLogin(loginData).then((res)=>{
+      if(res.status == HttpStatus.OK){
+        window.localStorage.setItem("token",res.data['token'])
+        history.push("/home");
+      }else{
+        console.log("Error")
+      }
+    })
+    
   };
 
-  const showError = (_fieldName: string) => {
-    let error = (errors as any)[_fieldName];
-
-    return (
-      error && (
-        <div
-          style={{
-            color: "red",
-            padding: 5,
-            paddingLeft: 12,
-            fontSize: "smaller",
-          }}
-        >
-          This field is required
-        </div>
-      )
-    );
+  const imgcss = {
+    height: "10vh",
+    width: "auto",
+    margin: "auto",
   };
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
-      <IonItem>
-        <IonLabel>Username:</IonLabel>
-        <IonInput type="text" {...register("username", { required: true })} />
-
-        {showError("username")}
-      </IonItem>
-      <IonItem>
-        <IonLabel>Password:</IonLabel>
-        <IonInput
-          type="password"
-          {...register("password", { required: true })}
-        />
-        {showError("password")}
-      </IonItem>
-      <IonButton type="submit" className="ion-margin-top" expand="full">
-        Submit
-      </IonButton>
-    </form>
+    <IonGrid className="loginGrid">
+      <IonRow className="loginRow">
+          <IonCol sizeMd="6" sizeLg="5" sizeSm="12">
+            <div className="loginHead">
+            <IonImg src={logo} alt="test" style={imgcss} />
+            </div>
+            <div className="loginForm">
+                <form onSubmit={handleSubmit(onSubmit)}>
+           <IonItem>
+             <IonLabel position="floating">User Name</IonLabel>
+             <IonInput
+               {...register('username', {
+                 required: 'This is a required field',
+                 pattern: {
+                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                   message: 'Please enter valid username',
+                 }
+               })}
+             />
+           </IonItem>
+           <ErrorMessage
+             errors={errors}
+             name="username"
+             as={<div style={{ color: 'red' }} />}
+           />
+           <IonItem>
+             <IonLabel position="floating">Password</IonLabel>
+             <IonInput
+               {...register('password', {
+                 required: 'This is a required field',
+                 pattern: {
+                   value: /^(?=.*\d).{8,}$/,
+                   message: 'Please enter valid password'
+                 }
+               })}
+             />
+           </IonItem>
+           <ErrorMessage
+             errors={errors}
+             name="password"
+             as={<div style={{ color: 'red' }} />}
+           />
+           <div className="signup">
+             <IonButton type="submit" shape="round" size="default" >Login</IonButton>
+           </div>
+         </form>
+            </div>
+          </IonCol>
+      </IonRow>
+    </IonGrid>
   );
 };
 

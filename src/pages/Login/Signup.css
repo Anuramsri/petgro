@@ -1,0 +1,32 @@
+.signup{
+    text-align: center;
+    padding: 10px;
+}
+
+.signupData{
+    border-bottom: 1px solid black;
+}
+
+
+.loginRow{
+    justify-content: center;
+    height: 100%;
+}
+
+.loginHead{
+    text-align: center;
+}
+
+.loginGrid{
+    /* background: #dfdfdf; */
+}
+
+.loginForm{
+    padding: 5;
+}
+
+.signup{
+    padding: 5;
+}
+
+

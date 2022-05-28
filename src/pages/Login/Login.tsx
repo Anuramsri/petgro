@@ -1,31 +1,35 @@
 import {
   IonContent,
-  IonHeader,
-  IonImg,
-  IonPage,
-  IonThumbnail,
+  IonPage
 } from "@ionic/react";
 import { Login } from "../../components/Forms/Login/Login";
 
-import logo from "../Login/logo.jpeg";
+import React from "react";
+import { Col } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
-  const imgcss = {
-    height: "10vh",
-    width: "auto",
-    margin: "auto",
-  };
   return (
     <IonPage>
-      <IonThumbnail>
-        <IonImg src={logo} alt="test" style={imgcss} />
-      </IonThumbnail>
-      <IonHeader>
-        <h2>Sign In</h2>
-      </IonHeader>
-
       <IonContent>
-        <Login />
+      <div className="login_sec">
+        <div className="container-fluid">
+          <div className="row">
+            <Col lg={3} md={12} sm={12} className="p-0 mobile_hide">
+              <div className="login_bg">
+                <div className="welcome_txt">
+                  <h1>Welcome!</h1>
+                  <p>Sign up your breed details and start earning</p>
+                  <Link className="button_base btn_radius button_bordered" to="/signup">SIGN UP</Link>
+                </div>
+              </div>
+            </Col>
+            <Col sm={12} xs={12} md={12} lg={9}>
+              <Login />
+            </Col>
+          </div>
+        </div>
+      </div>
       </IonContent>
     </IonPage>
   );

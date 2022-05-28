@@ -28,6 +28,8 @@ export interface IRoute {
 
 const LoginPage = lazy(() => import("../pages/Login/Login"));
 
+const SignUpPage = lazy(() => import("../pages/Login/SignUp"));
+
 const HomePage = lazy(() => import("../pages/Home/Home"));
 
 const Tab1 = lazy(() => import("../pages/Tab1"));
@@ -40,6 +42,10 @@ export const routes: IRoute[] = [
   {
     path: ROUTES.LOGIN,
     component: LoginPage,
+  },
+  {
+    path: ROUTES.SIGNUP,
+    component: SignUpPage,
   },
   {
     path: ROUTES.HOME,
