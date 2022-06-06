@@ -6,3 +6,195 @@
 .signupData{
     border-bottom: 1px solid black;
 }
+
+.submit{
+    text-align: right;
+    padding: 10px;
+    border-bottom-style: solid;
+}
+.worm{
+    position: absolute;
+    /* top: 426px; */
+    left: 206px;
+    width: 108px;
+    height: 44px;
+    font-family: Mulish;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(40,45,55,1);      
+}
+.dew{
+    position: absolute;
+  /* top: 430px; */
+  left: 19px;
+  width: 108px;
+  height: 44px;
+  font-family: Mulish;
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(62,189,224,1);
+}
+.upcom{
+    text-align: end;
+    /* padding: 10px; */
+}
+.his{
+  position: absolute;
+  left: 199px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(255,255,255,1);
+  background: rgba(239,176,52,1);
+  opacity: 1;
+  border: none;
+  border-radius: 6px;
+}
+.up{
+    position: absolute;
+    left: 406px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    border: none;
+    border-radius: 6px;
+}
+.textbox{
+        position: relative;
+    top: 4px;
+    left: 476px;
+    width: 36px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+}
+.deworm{
+    position: absolute;
+    font-size: 20px;
+    line-height: 28px;
+    color: rgba(62,189,224,1);
+}
+.vaccine{
+    top: 426px;
+    left: 156px;
+    width: 108px;
+    height: 44px;
+    font-size: 20px;
+    line-height: 28px;
+    color: rgba(40,45,55,1);
+}
+.act{
+    position: absolute;
+    left: 15px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: rgba(55,154,230,1);
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(55,154,230,1);
+}
+.med{
+    left: 336px;
+    height: 30px;
+    align-items: center;
+    font-size: 17px;
+    line-height: 30px;
+    color: rgba(55,154,230,1);
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    border: 1px solid rgba(55,154,230,1);
+    border-radius: 6px;
+    justify-content: center;
+    
+}
+.add{
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    border: none;
+    border-radius: 6px;
+}
+.hist{
+    position: absolute;
+    top: 718px;
+    left: 138px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255,255,255,1);
+    opacity: 1;
+    border: none;
+    border-radius: 6px;
+  }
+  /* .upc{
+      position: absolute;
+      left: 406px;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(255,255,255,1);
+      opacity: 1;
+      border: none;
+      border-radius: 6px;
+  } */
+  .open-modal{ 
+    position: absolute;
+    font-size: 12px;
+    top: 571px;
+    left: 199px;
+  }
+  .title{
+      /* width: 344px; */
+  height: 64px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(40,45,55,1);
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: rgb(66 94 161);
+  }
+  .textarea {
+    /* width: 370px; */
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    border : 2px solid #50c8ff;
+  }
+  /* .checkbox{
+    position: absolute;
+    top: 540px;
+    left: 414px;
+    height: 22px;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(40,45,55,1);
+} */
+/* .tog{
+    position: relative;
+    top: -11px;
+    left: 269px;
+    width: 36px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+} */

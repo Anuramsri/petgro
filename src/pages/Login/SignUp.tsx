@@ -20,30 +20,33 @@ import { ErrorMessage } from '@hookform/error-message';
 import logo from "../../assets/images/horizontal-light.png";
 import { Link } from "react-router-dom";
 import { Col } from 'reactstrap';
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as Yup from 'yup'
 import '../../pages/Login/Signup.css';
-
-const SignUpPage: React.FC = () => {
-  const {
-    handleSubmit,
-    control,
-    setValue,
-    register,
-    formState: { errors }
-  } = useForm({
-    defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmpassword: '',
-      privateCheck: true,
-    },
-    
-  });
-
 
   const onSubmit = (data: any) => {
     alert(JSON.stringify(data, null, 2));
+    console.log(JSON.stringify(data, null, 4))
   };
+
+  const formSchema = Yup.object().shape({
+    password: Yup.string()
+      .required('Password is mendatory')
+      .min(3, 'Password must be at 3 char long'),
+    confirmPwd: Yup.string()
+      .required('Password is mendatory')
+      .oneOf([Yup.ref('password')], 'Passwords does not match'),
+  })
+  const formOptions = { resolver: yupResolver(formSchema) }
+  const SignUpPage: React.FC = () => {
+    const {
+      handleSubmit,
+      control,
+      setValue,
+      register,
+      formState: { errors }
+    } = useForm(formOptions)
+    ;
 
   const imgcss = {
     height: "10vh",
@@ -74,18 +77,33 @@ const SignUpPage: React.FC = () => {
                   <IonContent className="ion-padding">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <IonItem>
-                        <IonLabel position="floating">Name</IonLabel>
+                        <IonLabel position="floating">First Name</IonLabel>
                         <IonInput
-                          {...register('name', {
+                          {...register('fname', {
                             required: 'This is a required field',
                           })}
                         />
                       </IonItem>
                       <ErrorMessage
                         errors={errors}
-                        name="name"
+                        name="fname"
                         as={<div style={{ color: 'red' }} />}
                       />
+                      <IonItem>
+
+                        <IonLabel position="floating">Last Name</IonLabel>
+                        <IonInput
+                          {...register('lname', {
+                            required: 'This is a required field',
+                          })}
+                        />
+                      </IonItem>
+                      <ErrorMessage
+                        errors={errors}
+                        name="lname"
+                        as={<div style={{ color: 'red' }} />}
+                      />
+
 
                       <IonItem>
                         <IonLabel position="floating">Email</IonLabel>
@@ -108,14 +126,12 @@ const SignUpPage: React.FC = () => {
                       <IonItem>
                         <IonLabel position="floating">Password</IonLabel>
                         <IonInput
-                          {...register('password', {
-                            required: 'This is a required field',
-                            pattern: {
-                              value: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                              message: 'invalid password'
-                            }
-                          })}
-                        />
+            type="password"
+            {...register('password')}
+            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+          />
+          <div className="invalid-feedback">{errors.password?.message}</div>
+        
                       </IonItem>
                       <ErrorMessage
                         errors={errors}
@@ -126,14 +142,12 @@ const SignUpPage: React.FC = () => {
                       <IonItem>
                         <IonLabel position="floating">Confirm Password</IonLabel>
                         <IonInput
-                          {...register('confirmpassword', {
-                            required: 'This is a required field',
-                            pattern: {
-                              value: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                              message: 'invalid password'
-                            }
-                          })}
-                        />
+            type="password"
+            {...register('confirmpassword')}
+            className={`form-control ${errors.confirmpassword ? 'is-invalid' : ''}`}
+          />
+          <div className="invalid-feedback">{errors.confirmpassword?.message}</div>
+        
                       </IonItem>
                       <ErrorMessage
                         errors={errors}
@@ -144,7 +158,7 @@ const SignUpPage: React.FC = () => {
                       <IonItem>
                         <IonLabel>I agree to the terms and conditions</IonLabel>
                         <Controller
-                          name="privateCheck"
+                          name="privateCheck" 
                           control={control}
                           render={({ field }) => {
                             return (

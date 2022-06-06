@@ -30,6 +30,18 @@ const LoginPage = lazy(() => import("../pages/Login/Login"));
 
 const SignUpPage = lazy(() => import("../pages/Login/SignUp"));
 
+const PetdetailPage = lazy(() => import("../pages/Petdetail/Petdetail"));
+
+const UserPage = lazy(() => import("../pages/User/User"));
+
+const DewormPage = lazy(() => import("../pages/Deworm/Deworm"));
+
+const VaccinePage = lazy(() => import("../pages/Vaccine/Vaccine"));
+
+const MedicalRecordPage = lazy(() => import("../pages/medicalRecord/record"));
+
+const ActivityPage = lazy(() => import("../pages/Activity/activity"));
+
 const HomePage = lazy(() => import("../pages/Home/Home"));
 
 const Tab1 = lazy(() => import("../pages/Tab1"));
@@ -50,6 +62,30 @@ export const routes: IRoute[] = [
   {
     path: ROUTES.HOME,
     component: HomePage,
+  },
+  {
+    path: ROUTES.PETDETAIL,
+    component: PetdetailPage,
+  },
+  {
+    path: ROUTES.ACTIVITY,
+    component: ActivityPage,
+  },
+  {
+    path: ROUTES.USER,
+    component: UserPage,
+  },
+  {
+    path: ROUTES.DEWORM,
+    component: DewormPage,
+  },
+  {
+    path: ROUTES.VACCINE,
+    component: VaccinePage,
+  },
+  {
+    path: ROUTES.MEDICALRECORD,
+    component: MedicalRecordPage,
   },
   {
     path: ROUTES.TAB1,

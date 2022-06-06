@@ -29,7 +29,7 @@
 
 .signup_content{
     margin: auto;
-    width: 60%;
+    width: 100%;
     height: 100vh;
 }
 
@@ -118,4 +118,16 @@ a {
      margin-right: 0 !important;
  }
 
+}
+.save{
+    text-align: center;
+}
+.img_pro {
+    src:url(../src/assets/images/dummy.jpg);
+    border-radius: 50%;
+    text-align: center;
+  }
+.ion-padding{
+    top: -10px;
+    border-bottom-style: groove;
 }

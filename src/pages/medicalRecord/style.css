@@ -1,0 +1,50 @@
+.vacinationDiv .card-content-ios {
+    
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    font-size: 16px;
+}
+
+.titleCls {
+    width: 61%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #6faac5;
+    
+}
+
+.titleContentCls {
+    font-size: 15px;
+    /* color: #6faac5; */
+}
+
+.vacinationDiv {
+    border: 2px solid #2dd36f;
+}
+
+
+.saveBtnCls {
+    position: relative;
+    left: 60%;
+}
+
+.innerDivCls{
+    margin:15px;
+}
+
+.dividerCls {
+    
+    min-height: 6px;
+}
+
+.iconsDiv {
+    box-shadow: none;
+}
+
+.textAreaDiv {
+    border : 2px solid #50c8ff;
+}
+
+.contentDivCls {
+    
+}
