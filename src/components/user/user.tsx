@@ -123,9 +123,9 @@ const UserPage: React.FC = () => {
                               <IonPopover
                                 trigger="open-date-input"
                                 showBackdrop={false}
-                                {...register("petdob", {
-                                  required: "This is a required field",
-                                })}
+                                // {...register("petdob", {
+                                //   required: "This is a required field",
+                                // })}
                               >
                                 <IonDatetime
                                   presentation="date"

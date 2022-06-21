@@ -115,10 +115,10 @@ const PetdetailPage: React.FC = () => {
                           <IonText slot="end">{popoverDate}</IonText>
                           <IonPopover
                             trigger="open-date-input"
-                            showBackdrop={false}
-                            {...register("petdob", {
-                              required: "This is a required field",
-                            })}
+                            // showBackdrop={false}
+                            // {...register("petdob", {
+                            //   required: "This is a required field",
+                            // })}
                           >
                             <IonDatetime
                               presentation="date"
