@@ -26,17 +26,27 @@ export interface IRoute {
   guard?: RoutesGuards;
 }
 
-const LoginPage = lazy(() => import("../pages/Login/Login"));
+const LoginPage = lazy(() => import("../pages/login/Login"));
 
-const SignUpPage = lazy(() => import("../pages/Login/SignUp"));
+const SignUpPage = lazy(() => import("../pages/login/SignUp"));
 
-const HomePage = lazy(() => import("../pages/Home/Home"));
+const PetdetailPage = lazy(() => import("../components/petdetail/petdetail"));
+
+const MedicalRecordPage = lazy(() => import("../pages/medicalRecord/record"));
+
+const HomePage = lazy(() => import("../pages/home/home"));
 
 const Tab1 = lazy(() => import("../pages/Tab1"));
 
 const Tab2 = lazy(() => import("../pages/Tab2"));
 
 const Tab3 = lazy(() => import("../pages/Tab3"));
+
+const UserPage = lazy(() => import("../components/user/user"));
+
+const DewormPage = lazy(() => import("../components/deworm/deworm"));
+
+const VaccinePage = lazy(() => import("../components/vaccine/vaccine"));
 
 export const routes: IRoute[] = [
   {
@@ -46,6 +56,10 @@ export const routes: IRoute[] = [
   {
     path: ROUTES.SIGNUP,
     component: SignUpPage,
+  },
+  {
+    path: ROUTES.PETDETAILS,
+    component: PetdetailPage,
   },
   {
     path: ROUTES.HOME,
@@ -62,5 +76,21 @@ export const routes: IRoute[] = [
   {
     path: ROUTES.TAB3,
     component: Tab3,
+  },
+  {
+    path: ROUTES.USER,
+    component: UserPage,
+  },
+  {
+    path: ROUTES.DEWORM,
+    component: DewormPage,
+  },
+  {
+    path: ROUTES.VACCINE,
+    component: VaccinePage,
+  },
+  {
+    path: ROUTES.MEDICALRECORD,
+    component: MedicalRecordPage,
   },
 ];

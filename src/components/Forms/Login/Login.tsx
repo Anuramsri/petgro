@@ -13,17 +13,14 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../../src/assets/images/horizontal-light.png";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import "../../../pages/Login/Signup.css";
-import { userLogin } from "../../services/services";
-import { HttpStatus } from "../../../routes/constants";
-
+import "../../../pages/login/Signup.css";
 export interface LoginData {
   username: string;
   password: string;
 }
 
 const Login: React.FC = () => {
-  const [loginData, setLoginData] = useState({});
+  const [, setLoginData] = useState({});
 
   const {
     handleSubmit,
@@ -39,15 +36,9 @@ const Login: React.FC = () => {
   const history = useHistory();
 
   const onSubmit = (data: any) => {
+    console.log("data", data);
     setLoginData(data);
-    userLogin(loginData).then((res) => {
-      if (res.status == HttpStatus.OK) {
-        window.localStorage.setItem("token", res.data["token"]);
-        history.push("/home");
-      } else {
-        console.log("Error");
-      }
-    });
+    history.push("/user");
   };
 
   const imgcss = {
@@ -66,13 +57,13 @@ const Login: React.FC = () => {
           <div className="loginForm">
             <form onSubmit={handleSubmit(onSubmit)}>
               <IonItem>
-                <IonLabel position="floating">User Name</IonLabel>
+                <IonLabel position="floating">Email :</IonLabel>
                 <IonInput
                   {...register("username", {
                     required: "This is a required field",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                      message: "Please enter valid username",
+                      message: "Please enter valid email",
                     },
                   })}
                 />
@@ -83,7 +74,7 @@ const Login: React.FC = () => {
                 as={<div style={{ color: "red" }} />}
               />
               <IonItem>
-                <IonLabel position="floating">Password</IonLabel>
+                <IonLabel position="floating">Password :</IonLabel>
                 <IonInput
                   {...register("password", {
                     required: "This is a required field",

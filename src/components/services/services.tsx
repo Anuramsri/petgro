@@ -1,37 +1,43 @@
 import { API_URL } from "../../routes/constants";
 
-import axios from 'axios'
+import axios from "axios";
 
-export const getToken = () =>{
-    return window.localStorage.getItem('token');
-}
-
+export const getToken = () => {
+  return window.localStorage.getItem("token");
+};
 
 // Login
-export const userLogin = async (data:any)=>{
-    console.log(data)
-    return axios.post(API_URL + "/login",data)
-}
+export const userLogin = async (data: any) => {
+  console.log(data);
+  return axios.post(API_URL + "/login", data);
+};
 
-export const userSignUp =  async (data:any) => {
-    console.log(data)
-    return axios.post(API_URL + "/register", data)
-}
+export const userSignUp = async (data: any) => {
+  console.log(data);
+  return axios.post(API_URL + "/register", data);
+};
 
+export const updateUserDetails = async (data: any) => {
+  return axios.post(API_URL + "/userDetails", data);
+};
 
-export const userDetails = async (data:any) => {
-    return axios.post(API_URL + "/userDetails", data, {headers:{Authorization:getToken() || '{}'}})
-}
+export const updateUser = async (data: any) => {
+  return axios.put(API_URL + "updateUser", data, {
+    headers: { Authorization: getToken() || "{}" },
+  });
+};
 
-export const updateUserdetails =  async (data:any) => {
-    return axios.put(API_URL+ "updateUserDetails", data, {headers:{Authorization:getToken() || '{}'}})
-}
+export const updatepetDetails = async (data: any) => {
+  return axios.post(API_URL + "/petDetails", data);
+};
 
-export const petDetails = async (data:any) => {
-    return axios.post(API_URL+ "/petDetails", data, {headers:{Authorization:getToken() || '{}'}})
-}
-
-export const updatepetdetails =  async (data:any) => {
-    return axios.put(API_URL+ "updatePetDetails", data, {headers:{Authorization:getToken() || '{}'}})
-}
-
+export const updatepetdetails = async (data: any) => {
+  console.log("coming here");
+  return axios.put(API_URL + "updatePetDetails", data);
+};
+export const updateMedicalRecord = async (data: any) => {
+  return axios.post(API_URL + "/updateMedicalRecord", data);
+};
+export const updateDeworm = async (data: any) => {
+  return axios.put(API_URL + "updateDeworm", data);
+};

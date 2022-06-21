@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   IonApp,
   IonLabel,
@@ -12,18 +12,18 @@ import {
   IonRow,
   IonCol,
   IonCheckbox,
-  IonHeader,
   IonToolbar,
 } from "@ionic/react";
 import "./Signup.css";
 import { useForm, Controller } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import logo from "../../assets/images/horizontal-light.png";
+import { userSignUp } from "../../components/services/services";
 import { Link } from "react-router-dom";
 import { Col } from "reactstrap";
-import "../../pages/Login/Signup.css";
-import { userSignUp } from "../../components/services/services";
+import "./Signup.css";
 import { useHistory } from "react-router-dom";
+
 const SignUpPage: React.FC = () => {
   const {
     handleSubmit,
@@ -40,16 +40,15 @@ const SignUpPage: React.FC = () => {
       confirmPassword: "",
       privateCheck: true,
     },
+    mode: "onBlur",
   });
   const history = useHistory();
   const onSubmit = (data: any) => {
+    console.log(data);
     userSignUp(data).then((res) => {
-      if (res.status) {
-        history.push("/home");
-      } else {
-        console.log("Error");
-      }
+      console.log(res.data);
     });
+    history.push("/login");
   };
 
   const imgcss = {
@@ -121,7 +120,7 @@ const SignUpPage: React.FC = () => {
                                   pattern: {
                                     value:
                                       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                    message: "Enter valid email address",
+                                    message: "Enter a valid email address!",
                                   },
                                 })}
                               />
@@ -139,8 +138,10 @@ const SignUpPage: React.FC = () => {
                                 {...register("password", {
                                   required: "This is a required field",
                                   pattern: {
-                                    value: /^(?=.*\d).{8,}$/,
-                                    message: "Enter valid password",
+                                    value:
+                                      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}/,
+                                    message:
+                                      "Password should be 8-20 characters and include atleast 1 letter,1 number,1 special character!",
                                   },
                                 })}
                               />
@@ -160,8 +161,9 @@ const SignUpPage: React.FC = () => {
                                 {...register("confirmPassword", {
                                   required: "This is a required field",
                                   pattern: {
-                                    value: /^(?=.*\d).{8,}$/,
-                                    message: "Enter valid password",
+                                    value:
+                                      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}/,
+                                    message: "Passwords don't match",
                                   },
                                 })}
                               />

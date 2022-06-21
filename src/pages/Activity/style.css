@@ -1,0 +1,13 @@
+.middleContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+    justify-content: center;
+    width: 84%;
+    position: absolute;
+    margin-top: 15px;
+}
+
+p {
+    color: black;
+}
