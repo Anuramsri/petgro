@@ -1,5 +1,11 @@
 {
   "name": "coodle-ui",
   "integrations": {},
-  "type": "react"
+  "type": "react",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://cors.api.com/api"
+    }
+  ]
 }
