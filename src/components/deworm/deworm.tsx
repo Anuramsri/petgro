@@ -25,7 +25,7 @@ import { useForm } from "react-hook-form";
 import logo from "../../assets/images/horizontal-light.png";
 import { Col } from "reactstrap";
 import { useState } from "react";
-import "../../pages/login/Signup.css";
+import "../../pages/petcss/signup.css";
 import { useHistory } from "react-router-dom";
 import { format, parseISO } from "date-fns";
 import { updatepetDetails } from "../services/services";

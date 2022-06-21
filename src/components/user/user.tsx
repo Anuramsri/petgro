@@ -23,7 +23,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import logo from "../../assets/images/horizontal-light.png";
 import { Col } from "reactstrap";
 import { useState } from "react";
-import "../../pages/login/Signup.css";
+import "../../pages/petcss/signup.css";
 import { format, parseISO } from "date-fns";
 import { useHistory } from "react-router-dom";
 import { updateUserDetails } from "../services/services";

@@ -14,14 +14,13 @@ import {
   IonCheckbox,
   IonToolbar,
 } from "@ionic/react";
-import "./Signup.css";
 import { useForm, Controller } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import logo from "../../assets/images/horizontal-light.png";
 import { userSignUp } from "../../components/services/services";
 import { Link } from "react-router-dom";
 import { Col } from "reactstrap";
-import "./Signup.css";
+import "../petcss/signup.css";
 import { useHistory } from "react-router-dom";
 
 const SignUpPage: React.FC = () => {

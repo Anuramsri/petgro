@@ -1,5 +1,5 @@
 import { IonContent, IonPage } from "@ionic/react";
-import { Login } from "../../components/Forms/login/login";
+import { Login } from "../../components/Forms/Login/login";
 
 import React from "react";
 import { Col } from "reactstrap";

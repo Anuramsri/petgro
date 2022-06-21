@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../../src/assets/images/horizontal-light.png";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import "../../../pages/login/Signup.css";
+import "../../../pages/petcss/signup.css";
 export interface LoginData {
   username: string;
   password: string;

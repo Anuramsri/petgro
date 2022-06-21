@@ -26,9 +26,9 @@ export interface IRoute {
   guard?: RoutesGuards;
 }
 
-const LoginPage = lazy(() => import("../pages/login/Login"));
+const LoginPage = lazy(() => import("../pages/login/login"));
 
-const SignUpPage = lazy(() => import("../pages/login/SignUp"));
+const SignUpPage = lazy(() => import("../pages/signup/signUp"));
 
 const PetdetailPage = lazy(() => import("../components/petdetail/petdetail"));
 
