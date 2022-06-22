@@ -14,14 +14,14 @@ import logo from "../../../../src/assets/images/horizontal-light.png";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import "../../../pages/petcss/signup.css";
+import { userLogin } from "../../services/services";
+
 export interface LoginData {
   username: string;
   password: string;
 }
 
 const Login: React.FC = () => {
-  const [, setLoginData] = useState({});
-
   const {
     handleSubmit,
     register,
@@ -36,9 +36,21 @@ const Login: React.FC = () => {
   const history = useHistory();
 
   const onSubmit = (data: any) => {
-    console.log("data", data);
-    setLoginData(data);
-    history.push("/user");
+    let payload  = {
+      "email" : data.username,
+      "password" : data.password
+    }
+    userLogin(payload).then(
+      res =>{
+        console.log("logged in",res.data)
+        window.localStorage.setItem("token",res.data['token'])
+        if(res.data['token']){
+          history.push('/user')
+        }else{
+          alert("there was some issues")
+        }
+      }
+    )
   };
 
   const imgcss = {

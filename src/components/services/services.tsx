@@ -8,13 +8,11 @@ export const getToken = () => {
 
 // Login
 export const userLogin = async (data: any) => {
-  console.log(data);
-  return axios.post(API_URL + "/login", data);
+  return axios.post(API_URL + "/user/login",data)
 };
 
 export const userSignUp = async (data: any) => {
-  console.log(data);
-  return axios.post(API_URL + "/register", data);
+  return axios.post(API_URL + "/user/signup", data);
 };
 
 export const updateUserDetails = async (data: any) => {

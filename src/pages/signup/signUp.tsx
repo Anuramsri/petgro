@@ -43,11 +43,14 @@ const SignUpPage: React.FC = () => {
   });
   const history = useHistory();
   const onSubmit = (data: any) => {
-    console.log(data);
     userSignUp(data).then((res) => {
-      console.log(res.data);
+      if(res.data){
+        history.push('/login')
+      }else{
+        alert("There was some issues on creating account")
+      }
     });
-    history.push("/login");
+    // history.push("/login");
   };
 
   const imgcss = {
