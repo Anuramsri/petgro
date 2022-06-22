@@ -1,6 +1,5 @@
 import { IonContent, IonPage } from "@ionic/react";
-import { Login } from "../../components/forms/Login/login";
-
+import { Login } from "../../components/forms/login/login";
 import React from "react";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
